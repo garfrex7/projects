@@ -1,0 +1,100 @@
+import tkinter
+from tkinter import *
+window=tkinter.Tk()
+window.geometry("300x300")
+window.title("gui calculator")
+window.configure(bg="black")
+
+exp=""
+def click(n):
+    global exp
+    exp=exp+str(n)
+    equation.set(exp)
+def clear():
+    global exp
+    exp=""
+    equation.set(exp)
+def delete():
+    global exp
+    exp=(exp[0:len(exp)-1])
+    equation.set(exp)
+def equal():
+    global exp
+    try:                
+        answer=eval(exp)
+        equation.set(str(answer))
+        exp=""
+    except:
+        equation.set("this is not possible")
+        exp=""
+equation = StringVar()
+entry1=tkinter.Entry(window,text=equation,bg="white",fg="black",font=("Times New Roman",40))
+entry1.grid(columnspan=4,ipadx=0)
+
+Button1=tkinter.Button(window,text="1",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=lambda:click(1))
+Button1.grid(row=2,column=0)
+
+Button2=tkinter.Button(window,text="2",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=lambda:click(2))
+Button2.grid(row=2,column=1)
+
+Button3=tkinter.Button(window,text="3",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=lambda:click(3))
+Button3.grid(row=2,column=2)
+
+Button4=tkinter.Button(window,text="4",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=lambda:click(4))
+Button4.grid(row=3,column=0)
+
+Button5=tkinter.Button(window,text="5",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=lambda:click(5))
+Button5.grid(row=3,column=1)
+
+
+Button6=tkinter.Button(window,text="6",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=lambda:click(6))
+Button6.grid(row=3,column=2)
+
+Button7=tkinter.Button(window,text="7",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=lambda:click(7))
+Button7.grid(row=4,column=0)
+
+Button8=tkinter.Button(window,text="8",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=lambda:click(8))
+Button8.grid(row=4,column=1)
+
+Button9=tkinter.Button(window,text="9",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=lambda:click(9))
+Button9.grid(row=4,column=2)
+
+Button0=tkinter.Button(window,text="0",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=lambda:click(0))
+Button0.grid(row=5,column=1)
+
+# multiply , add , subtract , divide
+Button10=tkinter.Button(window,text="➕",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=lambda:click("+"))
+Button10.grid(row=2,column=3)
+#add
+Button11=tkinter.Button(window,text="➖",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=lambda:click("-"))
+Button11.grid(row=3,column=3)
+#subtract
+Button12=tkinter.Button(window,text="✖️",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=lambda:click("*"))
+Button12.grid(row=4,column=3)
+#multiply
+Button13=tkinter.Button(window,text="➗",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=lambda:click("/"))
+Button13.grid(row=5,column=3)
+#divide
+
+
+
+#homework make 3 buttons clear,equal =,decimal.
+
+Button14=tkinter.Button(window,text="clear",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=clear)
+Button14.grid(row=5,column=0)
+#clear
+Button15=tkinter.Button(window,text="🟰",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=equal)
+Button15.grid(row=6,column=2)
+#answer
+Button16=tkinter.Button(window,text=".",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=lambda:click(".")) 
+Button16.grid(row=5,column=2)
+#delete
+Button17=tkinter.Button(window,text="delete",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=delete)
+Button17.grid(row=6,column=-0)
+#pi
+Button18=tkinter.Button(window,text="π",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=lambda:click(3.141))
+Button18.grid(row=6,column=3)
+#square root
+Button19=tkinter.Button(window,text="√",bg="white",fg="black",font=("Times New Roman",25),width=7,height=2,command=lambda:click("**(1/2)"))
+Button19.grid(row=6,column=1)
+window.mainloop()
